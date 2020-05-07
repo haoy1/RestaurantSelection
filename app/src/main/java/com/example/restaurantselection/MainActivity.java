@@ -26,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        username = (EditText) findViewById(R.id.editText3);
-        Password = (EditText) findViewById(R.id.editText2);
+        username = (EditText) findViewById(R.id.etUsername);
+        Password = (EditText) findViewById(R.id.etPassword);
         Noaccount = (TextView) findViewById(R.id.textView);
-        NotMatch = (TextView) findViewById(R.id.textView2);
-        Login = (Button) findViewById(R.id.loginButton);
-        Register = (Button) findViewById(R.id.button2);
+        NotMatch = (TextView) findViewById(R.id.tvLoadingMessage);
+        Login = (Button) findViewById(R.id.btnLogin);
+        Register = (Button) findViewById(R.id.btnRegister);
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override

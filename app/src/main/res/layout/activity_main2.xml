@@ -13,8 +13,11 @@
         android:ems="10"
         android:hint="username"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="275dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.878" />
 
     <EditText
         android:id="@+id/register_password"
@@ -23,14 +26,19 @@
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="343dp" />
+        app:layout_constraintBottom_toTopOf="@+id/createaccountbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.823" />
 
     <Button
         android:id="@+id/createaccountbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CREATE ACCOUNT"
-        tools:layout_editor_absoluteX="133dp"
-        tools:layout_editor_absoluteY="455dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.714"
+        tools:layout_editor_absoluteX="133dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
