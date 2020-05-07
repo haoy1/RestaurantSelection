@@ -20,7 +20,7 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         username = (EditText) findViewById(R.id.register_username);
         password = (EditText) findViewById(R.id.register_password);
-        RegisterButton = (Button) findViewById(R.id.button2);
+        RegisterButton = (Button) findViewById(R.id.createaccountbutton);
 
         RegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
