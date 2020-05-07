@@ -1,5 +1,6 @@
 package com.example.restaurantselection;
 
+
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView NotMatch;
     private Button Login;
     private Button Register;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loginButtonAction(String username, String password){
-        if(isMatched(username, password)){
+        if(ConnectivityFunctions.isMatched(username, password)){ //TODO: (nothing need to be done just a marker) isMatched() is called
             Intent intent = new Intent(MainActivity.this, SuccessfuloginActivity.class);
             startActivity(intent);
         }else{
@@ -63,11 +63,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private static boolean isMatched(String username, String password){ //This is called in loginButtonAction [line37]
-        return true;
-    }
 
-    private static boolean registerAccount(){
-        return true;
-    }
 }

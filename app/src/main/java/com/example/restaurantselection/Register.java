@@ -10,27 +10,23 @@ import com.example.restaurantselection.R;
 import android.os.Bundle;
 
 public class Register extends AppCompatActivity {
-
     private EditText username;
-    private EditText Password;
+    private EditText password;
     private Button RegisterButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_main);
+        username = (EditText) findViewById(R.id.register_username);
+        password = (EditText) findViewById(R.id.register_password);
+        RegisterButton = (Button) findViewById(R.id.button2);
+
+        RegisterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ConnectivityFunctions.createAccount(username.getText().toString(), password.getText().toString());//TODO: (nothing need to be done just a marker) createAccount() is called
+            }
+        });
     }
-
-    username = (EditText) findViewById(R.id.register_username);
-    Password = (EditText) findViewById(R.id.register_password);
-    RegisterButton = (Button) findViewById(R.id.button2);
-
-    Register.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            createAccount(username.getText().toString(), password.getText().toString());
-        }
-    });
-
-    private static boolean createAccount(String username, String password)
 }
