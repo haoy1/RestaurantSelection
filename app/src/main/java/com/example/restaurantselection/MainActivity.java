@@ -5,6 +5,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.restaurantselection.DataAccess.DataAccess;
 import com.example.restaurantselection.R;
 
 import android.os.Bundle;
@@ -24,20 +25,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        username = (EditText) findViewByID(R.id.editText3);
-        Password = (EditText) findViewByID(R.id.editText2);
-        Noaccount = (TextView) findViewByID(R.id.textView);
-        result = (TextView) findViewByID(R.id.textView2);
-        Login = (Button) findViewById(R.id.loginButton);
-        Register = (Button) findViewById(R.id.button2);
+        username = (EditText) findViewById(R.id.etUsername);
+        Password = (EditText) findViewById(R.id.etPassword);
+        Noaccount = (TextView) findViewById(R.id.textView);
+        result = (TextView) findViewById(R.id.tvLoadingMessage);
+        Login = (Button) findViewById(R.id.btnLogin);
+        Register = (Button) findViewById(R.id.btnRegister);
     }
 
     private void loginSucceed(){
-        if(isMatched(username, Password, result)){
+        if(DataAccess.login(username.getText().toString(), Password.getText().toString(), result)){
 
         }
     }
-    private static boolean isMatched(EditText username, EditText password, TextView result){
-        return true;
-    }
+
 }
