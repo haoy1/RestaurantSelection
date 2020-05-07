@@ -1,5 +1,7 @@
 package com.example.restaurantselection;
 
+import android.content.Intent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText username;
     private EditText Password;
     private TextView Noaccount;
-    private TextView result;
+    private TextView NotMatch;
     private Button Login;
     private Button Register;
 
@@ -24,20 +26,48 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        username = (EditText) findViewByID(R.id.editText3);
-        Password = (EditText) findViewByID(R.id.editText2);
-        Noaccount = (TextView) findViewByID(R.id.textView);
-        result = (TextView) findViewByID(R.id.textView2);
+        username = (EditText) findViewById(R.id.editText3);
+        Password = (EditText) findViewById(R.id.editText2);
+        Noaccount = (TextView) findViewById(R.id.textView);
+        NotMatch = (TextView) findViewById(R.id.textView2);
         Login = (Button) findViewById(R.id.loginButton);
         Register = (Button) findViewById(R.id.button2);
+
+        Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginButtonAction(username.getText().toString(), Password.getText().toString());
+            }
+        });
+
+        Register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToRegisterPage();
+            }
+        });
     }
 
-    private void loginSucceed(){
-        if(isMatched(username, Password, result)){
-
+    private void loginButtonAction(String username, String password){
+        if(isMatched(username, password)){
+            Intent intent = new Intent(MainActivity.this, SuccessfuloginActivity.class);
+            startActivity(intent);
+        }else{
+            NotMatch.setText("Incorrect Password");
         }
     }
-    private static boolean isMatched(EditText username, EditText password, TextView result){
+
+    private void goToRegisterPage(){
+        Intent intent = new Intent(MainActivity.this, SuccessfuloginActivity.class);
+        startActivity(intent);
+
+    }
+
+    private static boolean isMatched(String username, String password){ //This is called in loginButtonAction [line37]
+        return true;
+    }
+
+    private static boolean registerAccount(){
         return true;
     }
 }
