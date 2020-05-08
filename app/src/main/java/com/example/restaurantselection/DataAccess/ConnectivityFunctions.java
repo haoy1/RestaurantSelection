@@ -34,8 +34,6 @@ public class ConnectivityFunctions {
     private static String savedPassword;
 
     public static void createAccount(final String username, final String password, Response.Listener<String> listener, Response.ErrorListener errorListener){ //Called in Register.java [line28]
-        savedUsername = username;
-        savedPassword = password;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url+"/register", listener, errorListener){
             @Override
             public Map<String, String> getParams() throws AuthFailureError{
@@ -49,6 +47,8 @@ public class ConnectivityFunctions {
     }
 
     public static void login(final String username, final String password, Response.Listener<String> listener, Response.ErrorListener errorListener){ //Called in MainActivity.java [line52]
+        savedUsername = username;
+        savedPassword = password;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url+"/login", listener, errorListener){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError{

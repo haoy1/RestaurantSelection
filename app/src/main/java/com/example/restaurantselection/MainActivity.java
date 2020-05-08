@@ -38,18 +38,18 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
         NotMatch = (TextView) findViewById(R.id.tvLoadingMessage);
         Login = (Button) findViewById(R.id.btnLogin);
         Register = (Button) findViewById(R.id.btnRegister);
-        HistoryOrder = (Button) findViewById(R.id.btnhistory);
-        RecordButton = (Button) findViewById(R.id.btngorecord);
-        RecordButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                startActivity(new Intent(MainActivity.this, createOrder.class));
-            }
-        });
-        HistoryOrder.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                startActivity(new Intent(MainActivity.this, checkHistory.class));
-            }
-        });
+//        HistoryOrder = (Button) findViewById(R.id.btnhistory);
+//        RecordButton = (Button) findViewById(R.id.btngorecord);
+//        RecordButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v){
+//                startActivity(new Intent(MainActivity.this, createOrder.class));
+//            }
+//        });
+//        HistoryOrder.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v){
+//                startActivity(new Intent(MainActivity.this, checkHistory.class));
+//            }
+//        });
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     @Override
     public void onResponse(String response) {
         if(response.equals("successful")){ //TODO: (nothing need to be done just a marker) isMatched() is called
-            Intent intent = new Intent(MainActivity.this, SuccessfuloginActivity.class);
+            Intent intent = new Intent(MainActivity.this, RestaurantListView.class);
             startActivity(intent);
         }else{
             NotMatch.setTextColor(Color.RED);
