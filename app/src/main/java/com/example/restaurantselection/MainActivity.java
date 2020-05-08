@@ -13,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.restaurantselection.DataAccess.ConnectivityFunctions;
 import com.example.restaurantselection.DataAccess.RequestQueueSingleton;
+import com.example.restaurantselection.DataAccess.TrustAllCerts;
 
 import android.os.Bundle;
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TrustAllCerts.nuke();
         RequestQueueSingleton.getInstance(this);
         setContentView(R.layout.activity_main);
 
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
     @Override
     public void onErrorResponse(VolleyError error){
-        error.getCause().printStackTrace();
+        error.printStackTrace();
     }
 
 }

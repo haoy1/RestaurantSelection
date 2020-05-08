@@ -25,10 +25,10 @@ import java.util.Map;
 public class ConnectivityFunctions {
 
     //rose server
-    //private static final String url = "http://137.112.104.115:8080";
+    private static final String url = "https://137.112.104.115:8443";
 
     //local server
-    private static final String url = "http://10.0.2.2:8080";
+    //private static final String url = "https://10.0.2.2:8443";
 
     private static String savedUsername;
     private static String savedPassword;
