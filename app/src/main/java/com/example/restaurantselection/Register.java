@@ -5,11 +5,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.example.restaurantselection.R;
 
 import android.os.Bundle;
 
-public class Register extends AppCompatActivity {
+public class Register extends AppCompatActivity implements Response.Listener<String>, Response.ErrorListener {
     private EditText username;
     private EditText password;
     private Button RegisterButton;
@@ -25,8 +27,26 @@ public class Register extends AppCompatActivity {
         RegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ConnectivityFunctions.createAccount(username.getText().toString(), password.getText().toString());//TODO: (nothing need to be done just a marker) createAccount() is called
+                registerUser(username.getText().toString(), password.getText().toString());
             }
         });
+    }
+
+    public void registerUser(String username, String password){
+        ConnectivityFunctions.createAccount(username, password, this, this);//TODO: (nothing need to be done just a marker) createAccount() is called
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+
+    }
+
+    @Override
+    public void onResponse(String response) {
+        if(response.equals("Success")){
+            //todo what happens upon successful registration
+        }else{
+            //todo what happens upon unsuccessful registration
+        }
     }
 }

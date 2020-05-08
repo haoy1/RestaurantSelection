@@ -1,20 +1,29 @@
 package com.example.restaurantselection;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.example.restaurantselection.DataAccess.RequestQueueSingleton;
 import com.example.restaurantselection.R;
 
 import android.os.Bundle;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Response.Listener<String>, Response.ErrorListener{
     private EditText username;
     private EditText Password;
     private TextView Noaccount;
@@ -24,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        RequestQueueSingleton.getInstance(this);
         setContentView(R.layout.activity_main);
 
         username = (EditText) findViewById(R.id.etUsername);
@@ -49,12 +59,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loginButtonAction(String username, String password){
-        if(ConnectivityFunctions.isMatched(username, password)){ //TODO: (nothing need to be done just a marker) isMatched() is called
-            Intent intent = new Intent(MainActivity.this, SuccessfuloginActivity.class);
-            startActivity(intent);
-        }else{
-            NotMatch.setText("Incorrect Password");
-        }
+        NotMatch.setTextColor(Color.BLACK);
+        NotMatch.setText("loading");
+        ConnectivityFunctions.login(username, password, this, this); //TODO: (nothing need to be done just a marker) isMatched() is called
+
     }
 
     private void goToRegisterPage(){
@@ -63,5 +71,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onResponse(String response) {
+        if(response.equals("successful")){ //TODO: (nothing need to be done just a marker) isMatched() is called
+            Intent intent = new Intent(MainActivity.this, SuccessfuloginActivity.class);
+            startActivity(intent);
+        }else{
+            NotMatch.setTextColor(Color.RED);
+            NotMatch.setText("Incorrect Password or username");
+        }
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error){
+        error.getCause().printStackTrace();
+    }
 
 }
