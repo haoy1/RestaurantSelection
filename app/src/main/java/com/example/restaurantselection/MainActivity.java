@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     private TextView NotMatch;
     private Button Login;
     private Button Register;
+    private Button HistoryOrder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +37,12 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
         NotMatch = (TextView) findViewById(R.id.tvLoadingMessage);
         Login = (Button) findViewById(R.id.btnLogin);
         Register = (Button) findViewById(R.id.btnRegister);
-
+        HistoryOrder = (Button) findViewById(R.id.btnhistory);
+        HistoryOrder.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                startActivity(new Intent(MainActivity.this, checkHistory.class));
+            }
+        });
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
