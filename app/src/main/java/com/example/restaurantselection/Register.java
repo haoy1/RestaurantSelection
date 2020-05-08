@@ -1,6 +1,7 @@
 package com.example.restaurantselection;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,11 +12,13 @@ import com.android.volley.VolleyError;
 import com.example.restaurantselection.DataAccess.ConnectivityFunctions;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class Register extends AppCompatActivity implements Response.Listener<String>, Response.ErrorListener {
     private EditText username;
     private EditText password;
     private Button RegisterButton;
+    private TextView loadingMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +27,14 @@ public class Register extends AppCompatActivity implements Response.Listener<Str
         username = (EditText) findViewById(R.id.register_username);
         password = (EditText) findViewById(R.id.register_password);
         RegisterButton = (Button) findViewById(R.id.createaccountbutton);
+        loadingMessage = findViewById(R.id.tvRegisterLoadingMessage);
 
         RegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loadingMessage.setTextColor(Color.BLACK);
+                loadingMessage.setText("Loading...");
                 registerUser(username.getText().toString(), password.getText().toString());
-                Intent intent = new Intent(Register.this, MainActivity.class);
-                startActivity(intent);
             }
         });
     }
@@ -47,9 +51,11 @@ public class Register extends AppCompatActivity implements Response.Listener<Str
     @Override
     public void onResponse(String response) {
         if(response.equals("Success")){
-            //todo what happens upon successful registration
+            Intent intent = new Intent(Register.this, MainActivity.class);
+            startActivity(intent);
         }else{
-            //todo what happens upon unsuccessful registration
+            loadingMessage.setTextColor(Color.RED);
+            loadingMessage.setText("User name is already taken");
         }
     }
 }

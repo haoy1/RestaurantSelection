@@ -61,15 +61,16 @@ public class RestaurantListView extends AppCompatActivity implements RestaurantL
 
     @Override
     public void onResponse(JSONArray response) {
-            Type listType = new TypeToken<ArrayList<Restaurant>>() {
-            }.getType();
-            String json = response.toString();
-            //something is going wrong with gson I think. The json appears to be correct, but gson is only parsing element with a space in their value, and only parsing the first element of the list.
-            ArrayList<Restaurant> restaurants = new Gson().fromJson(json, listType);
-            this.restaurants = restaurants;
-            adapter.setList(restaurants);
-            loadingMessage.setText("loading successful");
-
+        Type listType = new TypeToken<ArrayList<Restaurant>>() {
+        }.getType();
+        String json = response.toString();
+        System.out.println(json);
+        //something is going wrong with gson I think. The json appears to be correct, but gson is only parsing element with a space in their value, and only parsing the first element of the list.
+        ArrayList<Restaurant> restaurants = new Gson().fromJson(json, listType);
+        System.out.println(restaurants.size());
+        this.restaurants = restaurants;
+        adapter.setList(restaurants);
+        loadingMessage.setText("loading successful");
     }
 
     @Override

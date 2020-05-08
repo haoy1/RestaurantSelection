@@ -2,6 +2,7 @@ package com.example.restaurantselection.DataAccess;
 
 import android.app.Application;
 import android.os.Build;
+import android.util.Base64;
 
 import androidx.annotation.RequiresApi;
 
@@ -18,7 +19,6 @@ import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,8 +38,8 @@ public class ConnectivityFunctions {
             @Override
             public Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
-                params.put("username", username);
-                params.put("password", password);
+                params.put("username", (username));
+                params.put("password", (password));
                 return params;
             }
         };
@@ -66,11 +66,15 @@ public class ConnectivityFunctions {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
-                params.put("username", savedUsername);
-                params.put("password", savedPassword);
+                params.put("username", (savedUsername));
+                params.put("password", (savedPassword));
                 return params;
             }
         };
         RequestQueueSingleton.getInstance().addToRequestQueue(arrayRequest);
+    }
+
+    public static String encode(String s){
+        return Base64.encodeToString(s.getBytes(), Base64.NO_WRAP);
     }
 }

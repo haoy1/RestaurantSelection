@@ -35,11 +35,11 @@ public class RestaurantListAdapter  extends RecyclerView.Adapter<RestaurantListA
         holder.itemView.setTag(restaurants.get(position));
 
         Restaurant current = restaurants.get(position);
-
+        System.out.println(position);
         holder.phoneNumber.setText(Long.toString(current.getContactNumber()));
         holder.address.setText(current.getAddress());
         holder.closeTime.append(" " + current.getClosingTime());
-        holder.openTime.append(" " + current.getOpeningTime());
+        holder.openTime.append(" " + current.getOpeningTime() + " ");
         holder.category.setText(current.getCategory());
         holder.name.setText(current.getName());
     }
@@ -64,6 +64,7 @@ public class RestaurantListAdapter  extends RecyclerView.Adapter<RestaurantListA
 
     public void setList(ArrayList<Restaurant> restaurants){
         this.restaurants = restaurants;
+        //System.out.println(restaurants.get(1).getName());
         this.notifyDataSetChanged();
     }
 

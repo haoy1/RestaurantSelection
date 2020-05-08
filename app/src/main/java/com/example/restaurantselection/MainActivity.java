@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     private void loginButtonAction(String username, String password){
         NotMatch.setTextColor(Color.BLACK);
         NotMatch.setText("loading");
+        System.out.println(ConnectivityFunctions.encode(ConnectivityFunctions.encode(username)));
         ConnectivityFunctions.login(username, password, this, this); //TODO: (nothing need to be done just a marker) isMatched() is called
 
     }

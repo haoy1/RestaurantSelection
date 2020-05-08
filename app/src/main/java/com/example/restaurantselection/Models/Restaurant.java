@@ -6,7 +6,7 @@ import java.util.Date;
 public class Restaurant implements Serializable {
 
     private int id;
-    private String Name;
+    private String name;
     private String website;
     private String openingTime;
     private String closingTime;
@@ -18,7 +18,7 @@ public class Restaurant implements Serializable {
 
     public Restaurant(int id, String name, String website, String openingTime, String closingTime, long contactNumber, String category, String address) {
         this.id = id;
-        Name = name;
+        name = name;
         this.website = website;
         this.openingTime = openingTime;
         this.closingTime = closingTime;
@@ -36,11 +36,11 @@ public class Restaurant implements Serializable {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public String getWebsite() {
