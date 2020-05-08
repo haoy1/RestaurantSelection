@@ -1,5 +1,6 @@
 package com.example.restaurantselection;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +20,7 @@ public class Register extends AppCompatActivity implements Response.Listener<Str
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_register);
         username = (EditText) findViewById(R.id.register_username);
         password = (EditText) findViewById(R.id.register_password);
         RegisterButton = (Button) findViewById(R.id.createaccountbutton);
@@ -28,6 +29,8 @@ public class Register extends AppCompatActivity implements Response.Listener<Str
             @Override
             public void onClick(View v) {
                 registerUser(username.getText().toString(), password.getText().toString());
+                Intent intent = new Intent(Register.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
