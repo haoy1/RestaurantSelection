@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.example.restaurantselection.R;
+import com.example.restaurantselection.DataAccess.ConnectivityFunctions;
 
 import android.os.Bundle;
 

@@ -1,11 +1,8 @@
 package com.example.restaurantselection;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,14 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.restaurantselection.DataAccess.ConnectivityFunctions;
 import com.example.restaurantselection.DataAccess.RequestQueueSingleton;
-import com.example.restaurantselection.R;
 
 import android.os.Bundle;
-
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements Response.Listener<String>, Response.ErrorListener{
     private EditText username;
