@@ -38,9 +38,8 @@ public class RestaurantListAdapter  extends RecyclerView.Adapter<RestaurantListA
 
         holder.phoneNumber.setText(Long.toString(current.getContactNumber()));
         holder.address.setText(current.getAddress());
-        SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm a");
-        holder.closeTime.append(" " + localDateFormat.format(current.getClosingTime()));
-        holder.openTime.append(" " + localDateFormat.format(current.getOpeningTime()));
+        holder.closeTime.append(" " + current.getClosingTime());
+        holder.openTime.append(" " + current.getOpeningTime());
         holder.category.setText(current.getCategory());
         holder.name.setText(current.getName());
     }
