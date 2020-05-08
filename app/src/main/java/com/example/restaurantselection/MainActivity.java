@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     private Button Login;
     private Button Register;
     private Button HistoryOrder;
+    private Button RecordButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,12 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
         Login = (Button) findViewById(R.id.btnLogin);
         Register = (Button) findViewById(R.id.btnRegister);
         HistoryOrder = (Button) findViewById(R.id.btnhistory);
+        RecordButton = (Button) findViewById(R.id.btngorecord);
+        RecordButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                startActivity(new Intent(MainActivity.this, createOrder.class));
+            }
+        });
         HistoryOrder.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 startActivity(new Intent(MainActivity.this, checkHistory.class));
