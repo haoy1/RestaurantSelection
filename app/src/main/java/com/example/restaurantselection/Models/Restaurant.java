@@ -11,5 +11,5 @@ public class Restaurant {
     private Date closingTime;
     private long contactNumber;
     private String category;
-
+    private String address;
 }
