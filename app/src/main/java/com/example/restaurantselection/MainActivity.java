@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     }
 
     private void goToRegisterPage(){
-        Intent intent = new Intent(MainActivity.this, SuccessfuloginActivity.class);
+        Intent intent = new Intent(MainActivity.this, Register.class);
         startActivity(intent);
 
     }
